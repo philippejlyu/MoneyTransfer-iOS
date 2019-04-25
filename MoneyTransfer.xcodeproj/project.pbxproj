@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		308412729059CDA65BCA30CF /* Pods_MoneyTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */; };
 		AD06930F2271489B000F34CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06930E2271489B000F34CA /* AppDelegate.swift */; };
-		AD0693112271489B000F34CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0693102271489B000F34CA /* ViewController.swift */; };
+		AD0693112271489B000F34CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0693102271489B000F34CA /* LoginViewController.swift */; };
 		AD0693142271489B000F34CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0693122271489B000F34CA /* Main.storyboard */; };
 		AD0693162271489D000F34CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0693152271489D000F34CA /* Assets.xcassets */; };
 		AD0693192271489D000F34CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0693172271489D000F34CA /* LaunchScreen.storyboard */; };
+		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215CE4D0503D80648D9E14F7 /* Pods-MoneyTransfer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTransfer.release.xcconfig"; path = "Target Support Files/Pods-MoneyTransfer/Pods-MoneyTransfer.release.xcconfig"; sourceTree = "<group>"; };
+		A99A60E303B991EE1761047A /* Pods-MoneyTransfer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTransfer.debug.xcconfig"; path = "Target Support Files/Pods-MoneyTransfer/Pods-MoneyTransfer.debug.xcconfig"; sourceTree = "<group>"; };
 		AD06930B2271489B000F34CA /* MoneyTransfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyTransfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD06930E2271489B000F34CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD0693102271489B000F34CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AD0693102271489B000F34CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD0693132271489B000F34CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD0693152271489D000F34CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD0693182271489D000F34CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD06931A2271489D000F34CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308412729059CDA65BCA30CF /* Pods_MoneyTransfer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B5811267F050782966FF58D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7EB089E270AB191B562C711B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A99A60E303B991EE1761047A /* Pods-MoneyTransfer.debug.xcconfig */,
+				215CE4D0503D80648D9E14F7 /* Pods-MoneyTransfer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AD0693022271489B000F34CA = {
 			isa = PBXGroup;
 			children = (
 				AD06930D2271489B000F34CA /* MoneyTransfer */,
 				AD06930C2271489B000F34CA /* Products */,
+				7EB089E270AB191B562C711B /* Pods */,
+				3B5811267F050782966FF58D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,7 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				AD06930E2271489B000F34CA /* AppDelegate.swift */,
-				AD0693102271489B000F34CA /* ViewController.swift */,
+				AD0693102271489B000F34CA /* LoginViewController.swift */,
+				ADB3166022717844003BBDB0 /* MainViewController.swift */,
 				AD0693122271489B000F34CA /* Main.storyboard */,
 				AD0693152271489D000F34CA /* Assets.xcassets */,
 				AD0693172271489D000F34CA /* LaunchScreen.storyboard */,
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD06931D2271489D000F34CA /* Build configuration list for PBXNativeTarget "MoneyTransfer" */;
 			buildPhases = (
+				50AA0528A04220C8F20FEB85 /* [CP] Check Pods Manifest.lock */,
 				AD0693072271489B000F34CA /* Sources */,
 				AD0693082271489B000F34CA /* Frameworks */,
 				AD0693092271489B000F34CA /* Resources */,
+				CFC534340FE079D55D7B0808 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +159,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		50AA0528A04220C8F20FEB85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoneyTransfer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFC534340FE079D55D7B0808 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoneyTransfer/Pods-MoneyTransfer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoneyTransfer/Pods-MoneyTransfer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AD0693072271489B000F34CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD0693112271489B000F34CA /* ViewController.swift in Sources */,
+				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
+				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,
 				AD06930F2271489B000F34CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +359,7 @@
 		};
 		AD06931E2271489D000F34CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A99A60E303B991EE1761047A /* Pods-MoneyTransfer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +378,7 @@
 		};
 		AD06931F2271489D000F34CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 215CE4D0503D80648D9E14F7 /* Pods-MoneyTransfer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
