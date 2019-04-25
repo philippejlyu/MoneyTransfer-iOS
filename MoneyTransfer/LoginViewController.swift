@@ -63,6 +63,7 @@ class LoginViewController: UIViewController {
     // MARK: - Helper functions
     
     func createUserBalance() {
+        // TODO: Change this to access the REST api that will handle any balance changes
         var parseObject = PFObject(className:"balances")
         parseObject["user"] = PFUser.current()
         parseObject["balance"] = 0
@@ -82,9 +83,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loggedIn" {
-            let user = sender as! PFUser
-        }
     }
 }
 

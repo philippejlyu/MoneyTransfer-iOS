@@ -93,13 +93,65 @@
                     <view key="view" contentMode="scaleToFill" id="F4n-Fx-vpn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9999999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOJ-WK-576">
+                                <rect key="frame" x="20" y="44" width="374" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="149" id="TJx-h4-Vsf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="77"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzb-RW-EzB">
+                                <rect key="frame" x="20" y="194" width="374" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="Qh6-8F-9ld"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="Transfer"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5k-qR-l24">
+                                <rect key="frame" x="20" y="268" width="374" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="FGM-pe-O4m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="Deposit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3J-x1-CRQ">
+                                <rect key="frame" x="20" y="342" width="374" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="DwE-N1-FRc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="Withdraw"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R3J-x1-CRQ" firstAttribute="top" secondItem="F5k-qR-l24" secondAttribute="bottom" constant="8" id="383-dN-Jl5"/>
+                            <constraint firstItem="R3J-x1-CRQ" firstAttribute="leading" secondItem="S4G-lB-Glo" secondAttribute="leading" constant="20" id="LRJ-nr-SpP"/>
+                            <constraint firstItem="IOJ-WK-576" firstAttribute="leading" secondItem="S4G-lB-Glo" secondAttribute="leading" constant="20" id="MEj-FU-mnb"/>
+                            <constraint firstItem="S4G-lB-Glo" firstAttribute="trailing" secondItem="R3J-x1-CRQ" secondAttribute="trailing" constant="20" id="QhB-0Q-HDV"/>
+                            <constraint firstItem="F5k-qR-l24" firstAttribute="top" secondItem="lzb-RW-EzB" secondAttribute="bottom" constant="8" id="ah9-je-yCw"/>
+                            <constraint firstItem="S4G-lB-Glo" firstAttribute="trailing" secondItem="lzb-RW-EzB" secondAttribute="trailing" constant="20" id="bT9-Wq-Ehc"/>
+                            <constraint firstItem="S4G-lB-Glo" firstAttribute="trailing" secondItem="F5k-qR-l24" secondAttribute="trailing" constant="20" id="ef4-aB-3D0"/>
+                            <constraint firstItem="IOJ-WK-576" firstAttribute="top" secondItem="S4G-lB-Glo" secondAttribute="top" id="h7y-Tf-bVa"/>
+                            <constraint firstItem="lzb-RW-EzB" firstAttribute="top" secondItem="IOJ-WK-576" secondAttribute="bottom" constant="1" id="izB-kd-AFp"/>
+                            <constraint firstItem="S4G-lB-Glo" firstAttribute="trailing" secondItem="IOJ-WK-576" secondAttribute="trailing" constant="20" id="nd8-ey-366"/>
+                            <constraint firstItem="lzb-RW-EzB" firstAttribute="leading" secondItem="S4G-lB-Glo" secondAttribute="leading" constant="20" id="o3l-jk-zXW"/>
+                            <constraint firstItem="F5k-qR-l24" firstAttribute="leading" secondItem="S4G-lB-Glo" secondAttribute="leading" constant="20" id="uAT-wJ-IiT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S4G-lB-Glo"/>
                     </view>
+                    <connections>
+                        <outlet property="balanceLabel" destination="IOJ-WK-576" id="9sb-pw-CIE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI2-Zu-dRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="138"/>
+            <point key="canvasLocation" x="885.50724637681162" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>
