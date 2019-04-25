@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
     
@@ -20,13 +21,16 @@ class LoginViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        let loggedIn = defaults.bool(forKey: "loggedIn")
         
-        if loggedIn {
-            // Ask for touch id
-        } else {
-            // Login for the first time
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(PFUser.current() != nil)
+        if PFUser.current() != nil {
+            // We are logged in, we will now verify the identity
+            self.usernameTextField.text = (PFUser.current()?.email)!
+            self.authenticate()
         }
     }
     
@@ -78,6 +82,26 @@ class LoginViewController: UIViewController {
                 print(error?.localizedDescription)
                 // There was a problem, check error.description
             }
+        }
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "We need to verify your identity"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (result, error) in
+                if result {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "loggedIn", sender: self)
+                    }
+                } else {
+                    // TODO: Authenticate manually
+                }
+            }
+        } else {
+            print("Error authenticating")
         }
     }
     
