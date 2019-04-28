@@ -34,11 +34,12 @@ class TransferViewController: UITableViewController {
             var transfer = PFObject(className: "moneyTransfers")
             
             transfer["amount"] = self.amount
-            transfer["from"] = PFUser.current()
-            transfer["to"] = recipient
+            transfer["from"] = (PFUser.current())!
+            transfer["to"] = (PFUser.current())!
             
             transfer.saveInBackground { (completed, error) in
                 if completed {
+                    // TODO: Contact REST API to have the sender balance decreased and receiver balance increase
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

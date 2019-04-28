@@ -71,7 +71,10 @@ class LoginViewController: UIViewController {
         var parseObject = PFObject(className:"balances")
         parseObject["user"] = PFUser.current()
         parseObject["balance"] = 0
-        
+        let acl = PFACL(user: (PFUser.current())!)
+        acl.setReadAccess(true, for: (PFUser.current())!)
+        acl.setWriteAccess(false, for: (PFUser.current())!)
+        parseObject.acl = aclm
         // Saves the new object.
         parseObject.saveInBackground {
             (success: Bool, error: Error?) in

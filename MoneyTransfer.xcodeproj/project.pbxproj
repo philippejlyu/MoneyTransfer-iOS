@@ -13,7 +13,6 @@
 		AD0693142271489B000F34CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0693122271489B000F34CA /* Main.storyboard */; };
 		AD0693162271489D000F34CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0693152271489D000F34CA /* Assets.xcassets */; };
 		AD0693192271489D000F34CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0693172271489D000F34CA /* LaunchScreen.storyboard */; };
-		AD594D0D2272334600E60725 /* IncomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D0C2272334600E60725 /* IncomingViewController.swift */; };
 		AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D0E2272335000E60725 /* HistoryViewController.swift */; };
 		AD594D112272336800E60725 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D102272336800E60725 /* TransferViewController.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
@@ -29,7 +28,6 @@
 		AD0693152271489D000F34CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD0693182271489D000F34CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD06931A2271489D000F34CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD594D0C2272334600E60725 /* IncomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewController.swift; sourceTree = "<group>"; };
 		AD594D0E2272335000E60725 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AD594D102272336800E60725 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			children = (
 				AD06930E2271489B000F34CA /* AppDelegate.swift */,
 				AD0693102271489B000F34CA /* LoginViewController.swift */,
-				AD594D0C2272334600E60725 /* IncomingViewController.swift */,
 				AD594D0E2272335000E60725 /* HistoryViewController.swift */,
 				AD594D102272336800E60725 /* TransferViewController.swift */,
 				ADB3166022717844003BBDB0 /* MainViewController.swift */,
@@ -225,7 +222,6 @@
 				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
 				AD594D112272336800E60725 /* TransferViewController.swift in Sources */,
 				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,
-				AD594D0D2272334600E60725 /* IncomingViewController.swift in Sources */,
 				AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */,
 				AD06930F2271489B000F34CA /* AppDelegate.swift in Sources */,
 			);
