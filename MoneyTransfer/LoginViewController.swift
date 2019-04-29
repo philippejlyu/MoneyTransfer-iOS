@@ -38,7 +38,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(_ sender: Any) {
         self.login(with: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
-            
+            if completed {
+                self.performSegue(withIdentifier: "loggedIn", sender: self)
+            } else {
+                let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -46,6 +53,11 @@ class LoginViewController: UIViewController {
         self.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
             if completed {
                 self.performSegue(withIdentifier: "loggedIn", sender: self)
+            } else {
+                let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -60,12 +72,19 @@ class LoginViewController: UIViewController {
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            let json = JSON(response.result.value!)
-            if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                let tracking = KeyTracking()
-                tracking.updateKey(accessToken, expiry: expiry)
-                completionHandler(true, nil)
+            if let responseValue = response.result.value {
+                let json = JSON(responseValue)
+                if let accessToken = json["token"].string, let expiry = json["expiry"].int {
+                    let tracking = KeyTracking()
+                    tracking.updateKey(accessToken, expiry: expiry)
+                    completionHandler(true, nil)
+                } else {
+                    completionHandler(false, "Invalid username or password")
+                }
+            } else {
+                completionHandler(false, "Could not connect to the server")
             }
+            
         }
     }
     
@@ -77,15 +96,19 @@ class LoginViewController: UIViewController {
         let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            let json = JSON(response.result.value!)
-            if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                let tracking = KeyTracking()
-                tracking.updateKey(accessToken, expiry: expiry)
-                completionHandler(true, nil)
+            if let responseValue = response.result.value {
+                let json = JSON(responseValue)
+                if let accessToken = json["token"].string, let expiry = json["expiry"].int {
+                    let tracking = KeyTracking()
+                    tracking.updateKey(accessToken, expiry: expiry)
+                    completionHandler(true, nil)
+                } else {
+                    // There is an error
+                    let message = json["error"].string!
+                    completionHandler(false, message)
+                }
             } else {
-                // There is an error
-                let message = json["error"].string!
-                completionHandler(false, message)
+                completionHandler(false, "Could not connect to the server")
             }
         }
     }
