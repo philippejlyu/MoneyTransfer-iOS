@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class TransferViewController: UITableViewController {
 
@@ -16,7 +15,6 @@ class TransferViewController: UITableViewController {
     @IBOutlet weak var amountTextField: UITextField!
     
     // MARK: - Properties
-    var recipient: PFUser? = nil
     var amount = 0.0
     
     
@@ -29,31 +27,7 @@ class TransferViewController: UITableViewController {
     
     // MARK: - Actions
     @IBAction func send() {
-        // TODO: Send
-        if let recipient = self.recipient {
-            var transfer = PFObject(className: "moneyTransfers")
-            
-            transfer["amount"] = self.amount
-            transfer["from"] = (PFUser.current())!
-            transfer["to"] = (PFUser.current())!
-            
-            transfer.saveInBackground { (completed, error) in
-                if completed {
-                    // TODO: Contact REST API to have the sender balance decreased and receiver balance increase
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        } else {
-            let alert = UIAlertController(title: "Error", message: "You must select someone to send money to", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
+        
         
     }
     

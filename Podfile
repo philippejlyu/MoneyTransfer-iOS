@@ -6,5 +6,6 @@ target 'MoneyTransfer' do
   use_frameworks!
 
   # Pods for MoneyTransfer
-  pod 'Parse'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 end
