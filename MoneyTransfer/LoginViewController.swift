@@ -47,7 +47,13 @@ class LoginViewController: UIViewController {
     // MARK: - Helper functions
     func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
         let url = URL(string: "http://127.0.0.1:5000/login")
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).authenticate(user: username, password: password).responseJSON { (response) in
+        
+        let credentialData = "\(username):\(password)"
+        let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
+        let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             let json = JSON(response.result.value!)
             if let accessToken = json["token"].string, let expiry = json["expiry"].int {
                 print(accessToken)
@@ -59,11 +65,6 @@ class LoginViewController: UIViewController {
     
     func createUserAccount(username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
         let url = URL(string: "http://127.0.0.1:5000/createaccount")
-        /*
-         let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-         let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-         let headers = ["Authorization": "Basic \(base64Credentials)"]
-        */
         
         let credentialData = "\(username):\(password)"
         let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
