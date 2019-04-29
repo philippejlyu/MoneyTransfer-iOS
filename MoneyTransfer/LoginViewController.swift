@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Parse
 import LocalAuthentication
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -26,64 +27,58 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(PFUser.current() != nil)
-        if PFUser.current() != nil {
-            // We are logged in, we will now verify the identity
-            self.usernameTextField.text = (PFUser.current()?.email)!
-            self.authenticate()
-        }
+        
     }
     
     // MARK: - Actions
     
     @IBAction func login(_ sender: Any) {
-        PFUser.logInWithUsername(inBackground: self.usernameTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-            if user != nil {
-                self.performSegue(withIdentifier: "loggedIn", sender: user)
-            }
+        self.login(with: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
+            
         }
     }
     
     @IBAction func createAccount(_ sender: Any) {
-        var user = PFUser()
-        user.username = self.usernameTextField.text
-        user.password = self.passwordTextField.text
-        user.email = self.usernameTextField.text
-        // Now we sign them up
-        user.signUpInBackground { (succeeded, error) in
-            if !succeeded {
-                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                // Now we create a balance for the user
-                self.createUserBalance()
-                self.performSegue(withIdentifier: "loggedIn", sender: user)
-            }
+        self.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
+            print(error)
         }
     }
     
     // MARK: - Helper functions
+    func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
+        let url = URL(string: "http://127.0.0.1:5000/login")
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).authenticate(user: username, password: password).responseJSON { (response) in
+            let json = JSON(response.result.value!)
+            if let accessToken = json["token"].string, let expiry = json["expiry"].int {
+                print(accessToken)
+                print(expiry)
+                completionHandler(true, nil)
+            }
+        }
+    }
     
-    func createUserBalance() {
-        // TODO: Change this to access the REST api that will handle any balance changes
-        var parseObject = PFObject(className:"balances")
-        parseObject["user"] = PFUser.current()
-        parseObject["balance"] = 0
-        let acl = PFACL(user: (PFUser.current())!)
-        acl.setReadAccess(true, for: (PFUser.current())!)
-        acl.setWriteAccess(false, for: (PFUser.current())!)
-        parseObject.acl = aclm
-        // Saves the new object.
-        parseObject.saveInBackground {
-            (success: Bool, error: Error?) in
-            if (success) {
-                // The object has been saved.
-                print("success")
+    func createUserAccount(username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
+        let url = URL(string: "http://127.0.0.1:5000/createaccount")
+        /*
+         let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+         let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+         let headers = ["Authorization": "Basic \(base64Credentials)"]
+        */
+        
+        let credentialData = "\(username):\(password)"
+        let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
+        let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            let json = JSON(response.result.value!)
+            if let accessToken = json["token"].string, let expiry = json["expiry"].int {
+                print(accessToken)
+                print(expiry)
+                completionHandler(true, nil)
             } else {
-                print(error?.localizedDescription)
-                // There was a problem, check error.description
+                // There is an error
+                let message = json["error"].string!
+                completionHandler(false, message)
             }
         }
     }
