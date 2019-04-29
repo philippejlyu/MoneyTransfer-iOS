@@ -22,7 +22,11 @@ class LoginViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let tracking = KeyTracking()
+        print(tracking.getKey())
+        print(tracking.isKeyExpired())
+        print(tracking.key)
+        print(tracking.keyExpiry)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +44,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func createAccount(_ sender: Any) {
         self.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
-            print(error)
+            if completed {
+                self.performSegue(withIdentifier: "loggedIn", sender: self)
+            }
         }
     }
     
@@ -56,8 +62,8 @@ class LoginViewController: UIViewController {
         Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             let json = JSON(response.result.value!)
             if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                print(accessToken)
-                print(expiry)
+                let tracking = KeyTracking()
+                tracking.updateKey(accessToken, expiry: expiry)
                 completionHandler(true, nil)
             }
         }
@@ -73,8 +79,8 @@ class LoginViewController: UIViewController {
         Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             let json = JSON(response.result.value!)
             if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                print(accessToken)
-                print(expiry)
+                let tracking = KeyTracking()
+                tracking.updateKey(accessToken, expiry: expiry)
                 completionHandler(true, nil)
             } else {
                 // There is an error
