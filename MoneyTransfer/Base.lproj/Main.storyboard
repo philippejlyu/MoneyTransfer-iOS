@@ -157,16 +157,16 @@
             </objects>
             <point key="canvasLocation" x="2803" y="-328"/>
         </scene>
-        <!--Incoming Transfers-->
+        <!--History-->
         <scene sceneID="zC4-Pb-sVW">
             <objects>
-                <tableViewController id="RkH-wm-ezR" sceneMemberID="viewController">
+                <tableViewController id="RkH-wm-ezR" customClass="HistoryViewController" customModule="MoneyTransfer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EON-QU-XHe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="wtn-QC-Zx2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="wtn-QC-Zx2" customClass="TransactionCell" customModule="MoneyTransfer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wtn-QC-Zx2" id="2bq-C0-Sah">
@@ -196,6 +196,10 @@
                                         <constraint firstItem="ZLb-me-vba" firstAttribute="top" secondItem="2bq-C0-Sah" secondAttribute="top" id="zEf-eZ-tue"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="yqN-jo-6qO" id="VZc-S7-G3Q"/>
+                                    <outlet property="recipientNameLabel" destination="ZLb-me-vba" id="A98-T1-Ekf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -203,7 +207,7 @@
                             <outlet property="delegate" destination="RkH-wm-ezR" id="8WB-dU-MHb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Incoming Transfers" id="hMq-FM-WwQ"/>
+                    <navigationItem key="navigationItem" title="History" id="hMq-FM-WwQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzG-yi-9p2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

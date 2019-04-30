@@ -16,6 +16,7 @@
 		AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D0E2272335000E60725 /* HistoryViewController.swift */; };
 		AD594D112272336800E60725 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D102272336800E60725 /* TransferViewController.swift */; };
 		AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */; };
+		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		AD594D0E2272335000E60725 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AD594D102272336800E60725 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTracking.swift; sourceTree = "<group>"; };
+		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,17 +89,34 @@
 			isa = PBXGroup;
 			children = (
 				AD06930E2271489B000F34CA /* AppDelegate.swift */,
-				AD0693102271489B000F34CA /* LoginViewController.swift */,
 				AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */,
-				AD594D0E2272335000E60725 /* HistoryViewController.swift */,
-				AD594D102272336800E60725 /* TransferViewController.swift */,
-				ADB3166022717844003BBDB0 /* MainViewController.swift */,
+				AD8226BB2278112E00124006 /* Controllers */,
+				AD8226BA2278112000124006 /* Cells */,
 				AD0693122271489B000F34CA /* Main.storyboard */,
 				AD0693152271489D000F34CA /* Assets.xcassets */,
 				AD0693172271489D000F34CA /* LaunchScreen.storyboard */,
 				AD06931A2271489D000F34CA /* Info.plist */,
 			);
 			path = MoneyTransfer;
+			sourceTree = "<group>";
+		};
+		AD8226BA2278112000124006 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD8226B82278110700124006 /* TransactionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AD8226BB2278112E00124006 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD0693102271489B000F34CA /* LoginViewController.swift */,
+				AD594D0E2272335000E60725 /* HistoryViewController.swift */,
+				AD594D102272336800E60725 /* TransferViewController.swift */,
+				ADB3166022717844003BBDB0 /* MainViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8226B92278110700124006 /* TransactionCell.swift in Sources */,
 				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
 				AD594D112272336800E60725 /* TransferViewController.swift in Sources */,
 				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,

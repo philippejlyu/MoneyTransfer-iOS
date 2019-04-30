@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class HistoryViewController: UITableViewController {
 
+    // MARK: - Properties
+    var transactions: Array<JSON>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.refreshData()
     }
 
     // MARK: - Table view data source
@@ -25,18 +25,20 @@ class HistoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return transactions?.count ?? 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TransactionCell
+        
+        let reference = transactions![indexPath.row]
+        cell.recipientNameLabel.text = reference[1].string!
+        cell.amountLabel.text = "$\(reference[2].double!)"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -73,6 +75,30 @@ class HistoryViewController: UITableViewController {
     }
     */
 
+    
+    // MARK: - Helper functions
+    func refreshData() {
+        let url = URL(string: "http://127.0.0.1:5000/transactions")
+        var headers: HTTPHeaders = [:]
+        let tracking = KeyTracking()
+        if let token = tracking.getKey(), let username = tracking.getUsername() {
+            headers = ["token": token, "username": username]
+            
+            Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+                if let responseValue = response.result.value {
+                    let json = JSON(responseValue)
+                    if let transactions = json["results"].array {
+                        self.transactions = transactions
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    // TODO: Connecion error
+                }
+            }
+        } else {
+            // TODO: Session expired
+        }
+    }
     /*
     // MARK: - Navigation
 
