@@ -10,21 +10,25 @@ import Foundation
 
 class KeyTracking {
     
-    var keyExpiry = 0
-    var key = ""
+    private var keyExpiry = 0
+    private var key = ""
+    private var username = ""
     
     init() {
         let defaults = UserDefaults.standard
         self.key = defaults.string(forKey: "authenticationKey") ?? ""
         self.keyExpiry = defaults.integer(forKey: "keyExpiry")
+        self.username = defaults.string(forKey: "username") ?? ""
     }
     
-    func updateKey(_ key: String, expiry: Int) {
+    func updateKey(_ key: String, expiry: Int, username: String) {
         self.key = key
         self.keyExpiry = expiry
+        self.username = username
         let defaults = UserDefaults.standard
         defaults.set(key, forKey: "authenticationKey")
         defaults.set(expiry, forKey: "keyExpiry")
+        defaults.set(username, forKey: "username")
     }
     
     func isKeyExpired() -> Bool {
@@ -37,7 +41,15 @@ class KeyTracking {
         if self.isKeyExpired() {
             return nil
         } else {
-            return key
+            return self.key
+        }
+    }
+    
+    func getUsername() -> String? {
+        if self.isKeyExpired() {
+            return nil
+        } else {
+            return self.username
         }
     }
 }

@@ -25,8 +25,6 @@ class LoginViewController: UIViewController {
         let tracking = KeyTracking()
         print(tracking.getKey())
         print(tracking.isKeyExpired())
-        print(tracking.key)
-        print(tracking.keyExpiry)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,7 +74,7 @@ class LoginViewController: UIViewController {
                 let json = JSON(responseValue)
                 if let accessToken = json["token"].string, let expiry = json["expiry"].int {
                     let tracking = KeyTracking()
-                    tracking.updateKey(accessToken, expiry: expiry)
+                    tracking.updateKey(accessToken, expiry: expiry, username: self.usernameTextField.text!)
                     completionHandler(true, nil)
                 } else {
                     completionHandler(false, "Invalid username or password")
@@ -100,7 +98,7 @@ class LoginViewController: UIViewController {
                 let json = JSON(responseValue)
                 if let accessToken = json["token"].string, let expiry = json["expiry"].int {
                     let tracking = KeyTracking()
-                    tracking.updateKey(accessToken, expiry: expiry)
+                    tracking.updateKey(accessToken, expiry: expiry, username: self.usernameTextField.text!)
                     completionHandler(true, nil)
                 } else {
                     // There is an error
