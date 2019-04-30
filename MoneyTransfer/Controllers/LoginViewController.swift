@@ -27,11 +27,6 @@ class LoginViewController: UIViewController {
         print(tracking.isKeyExpired())
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     // MARK: - Actions
     
     @IBAction func login(_ sender: Any) {
@@ -50,7 +45,17 @@ class LoginViewController: UIViewController {
     @IBAction func createAccount(_ sender: Any) {
         self.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
             if completed {
-                self.performSegue(withIdentifier: "loggedIn", sender: self)
+                let alert = UIAlertController(title: "Save password", message: "Would you like to save your password", preferredStyle: .alert)
+                let yes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    // TODO: Save the password in keychain with biometric authentication
+                    self.performSegue(withIdentifier: "loggedIn", sender: self)
+                })
+                let no = UIAlertAction(title: "No", style: .default, handler: { (action) in
+                    self.performSegue(withIdentifier: "loggedIn", sender: self)
+                })
+                alert.addAction(yes)
+                alert.addAction(no)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)

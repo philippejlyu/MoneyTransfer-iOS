@@ -187,12 +187,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ZLb-me-vba" firstAttribute="leading" secondItem="2bq-C0-Sah" secondAttribute="leading" constant="20" id="127-Dq-84v"/>
                                         <constraint firstItem="yqN-jo-6qO" firstAttribute="top" secondItem="ZLb-me-vba" secondAttribute="bottom" constant="1" id="1h9-20-acR"/>
-                                        <constraint firstItem="yqN-jo-6qO" firstAttribute="leading" secondItem="2bq-C0-Sah" secondAttribute="leading" constant="20" id="Lm0-xg-yv1"/>
+                                        <constraint firstItem="ZLb-me-vba" firstAttribute="leading" secondItem="2bq-C0-Sah" secondAttribute="leading" constant="20" id="O4l-i0-Dou"/>
                                         <constraint firstAttribute="trailing" secondItem="yqN-jo-6qO" secondAttribute="trailing" constant="20" id="OTg-3Y-d4e"/>
                                         <constraint firstAttribute="bottom" secondItem="yqN-jo-6qO" secondAttribute="bottom" constant="0.5" id="TYa-vP-X9D"/>
                                         <constraint firstAttribute="trailing" secondItem="ZLb-me-vba" secondAttribute="trailing" constant="20" id="g2k-EE-snV"/>
+                                        <constraint firstItem="yqN-jo-6qO" firstAttribute="leading" secondItem="2bq-C0-Sah" secondAttribute="leading" constant="20" id="xSn-uL-8PX"/>
                                         <constraint firstItem="ZLb-me-vba" firstAttribute="top" secondItem="2bq-C0-Sah" secondAttribute="top" id="zEf-eZ-tue"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -226,7 +226,6 @@
                     <connections>
                         <segue destination="M5F-rW-6ii" kind="relationship" relationship="viewControllers" id="ERa-Km-vma"/>
                         <segue destination="ail-5d-76r" kind="relationship" relationship="viewControllers" id="ZFE-KM-3HE"/>
-                        <segue destination="P1f-NY-QoX" kind="relationship" relationship="viewControllers" id="IU6-LK-zXD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgy-pQ-PYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,11 +251,11 @@
             </objects>
             <point key="canvasLocation" x="2051" y="-328"/>
         </scene>
-        <!--Incoming transfers-->
+        <!--History-->
         <scene sceneID="ykW-GW-J5z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ail-5d-76r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Incoming transfers" id="qeE-b2-S93"/>
+                    <tabBarItem key="tabBarItem" title="History" id="qeE-b2-S93"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Mi-9O-6Mz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -270,86 +269,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0g-TT-Q8s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2050.7246376811595" y="375"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="jaY-HQ-2kT">
-            <objects>
-                <tableViewController id="0c1-53-5mk" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dLr-Cu-Kw5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="EQ2-A9-KtS">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EQ2-A9-KtS" id="26I-oy-ASu">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H61-0F-xhT">
-                                            <rect key="frame" x="0.0" y="0.0" width="44" height="43.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="44" id="y5O-SY-U44"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timmothy Donald Cook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-hY-NXf">
-                                            <rect key="frame" x="52" y="0.0" width="342" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTd-vR-CZr">
-                                            <rect key="frame" x="52" y="22" width="342" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="JA4-hY-NXf" secondAttribute="trailing" constant="20" id="2Pv-eU-NfF"/>
-                                        <constraint firstItem="BTd-vR-CZr" firstAttribute="leading" secondItem="H61-0F-xhT" secondAttribute="trailing" constant="8" id="39w-js-Jut"/>
-                                        <constraint firstAttribute="trailing" secondItem="BTd-vR-CZr" secondAttribute="trailing" constant="20" id="4mC-nT-cep"/>
-                                        <constraint firstAttribute="bottom" secondItem="H61-0F-xhT" secondAttribute="bottom" id="Fuv-e5-INA"/>
-                                        <constraint firstItem="H61-0F-xhT" firstAttribute="leading" secondItem="26I-oy-ASu" secondAttribute="leading" id="YUY-i7-gKr"/>
-                                        <constraint firstAttribute="bottom" secondItem="BTd-vR-CZr" secondAttribute="bottom" constant="0.5" id="c6v-Ge-j9J"/>
-                                        <constraint firstItem="JA4-hY-NXf" firstAttribute="top" secondItem="26I-oy-ASu" secondAttribute="top" id="dPj-ft-PLY"/>
-                                        <constraint firstItem="JA4-hY-NXf" firstAttribute="leading" secondItem="H61-0F-xhT" secondAttribute="trailing" constant="8" id="eDE-Vo-R3h"/>
-                                        <constraint firstItem="H61-0F-xhT" firstAttribute="top" secondItem="26I-oy-ASu" secondAttribute="top" id="fgp-5F-Lg2"/>
-                                        <constraint firstItem="BTd-vR-CZr" firstAttribute="top" secondItem="JA4-hY-NXf" secondAttribute="bottom" constant="1" id="pzC-Ms-G4H"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0c1-53-5mk" id="XHq-28-5Of"/>
-                            <outlet property="delegate" destination="0c1-53-5mk" id="kTx-Kh-z8Z"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="ZTk-dq-oaY"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQG-nE-rl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2802.898550724638" y="1035.9375"/>
-        </scene>
-        <!--Transfer History-->
-        <scene sceneID="PAq-wq-gvf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P1f-NY-QoX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transfer History" id="h1g-fd-3u6"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dgz-2G-4CV">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0c1-53-5mk" kind="relationship" relationship="rootViewController" id="SEd-yZ-0Qu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f10-6h-As2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2051" y="1036"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aVJ-oi-7Sc">

@@ -13,7 +13,8 @@ import SwiftyJSON
 class HistoryViewController: UITableViewController {
 
     // MARK: - Properties
-    var transactions: Array<JSON>?
+    var incomingTransactions: Array<JSON>?
+    var outgoingTransactions: Array<JSON>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +23,42 @@ class HistoryViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // TODO
+        return 2
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return transactions?.count ?? 0
+        if section == 0 {
+            return incomingTransactions?.count ?? 0
+        } else {
+            return outgoingTransactions?.count ?? 0
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Incoming Transactions"
+        } else {
+            return "Outgoing Transactions"
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TransactionCell
+        if indexPath.section == 0 {
+            let reference = incomingTransactions![indexPath.row]
+            cell.recipientNameLabel.text = reference[0].string!
+            cell.amountLabel.text = "$\(reference[2].double!)"
+        } else {
+            let reference = outgoingTransactions![indexPath.row]
+            cell.recipientNameLabel.text = reference[1].string!
+            cell.amountLabel.text = "$\(reference[2].double!)"
+        }
         
-        let reference = transactions![indexPath.row]
-        cell.recipientNameLabel.text = reference[1].string!
-        cell.amountLabel.text = "$\(reference[2].double!)"
-
         return cell
     }
     
@@ -87,8 +110,9 @@ class HistoryViewController: UITableViewController {
             Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
                 if let responseValue = response.result.value {
                     let json = JSON(responseValue)
-                    if let transactions = json["results"].array {
-                        self.transactions = transactions
+                    if let outgoing = json["outgoing"].array, let incoming = json["incoming"].array {
+                        self.incomingTransactions = incoming
+                        self.outgoingTransactions = outgoing
                         self.tableView.reloadData()
                     }
                 } else {
