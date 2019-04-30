@@ -23,6 +23,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.getBalance()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getBalance()
+    }
     // MARK: - Actions
     
     // MARK: - Helper functions
