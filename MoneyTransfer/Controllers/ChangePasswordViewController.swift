@@ -39,15 +39,24 @@ class ChangePasswordViewController: UITableViewController {
                     let json = JSON(responseValue)
                     if let status = json["success"].string {
                         self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.showAlert(title: "Error", message: "Your password is incorrect")
                     }
                 } else {
-                    
+                    self.showAlert(title: "Error", message: "Your password is incorrect")
                 }
                 
             }
         } else {
-            
+            self.showAlert(title: "Error", message: "Your passwords do not match")
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancel() {
