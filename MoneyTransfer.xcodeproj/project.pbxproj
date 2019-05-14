@@ -18,6 +18,7 @@
 		AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */; };
 		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
+		ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */; };
 		ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC14EC2278BE95007803B4 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTracking.swift; sourceTree = "<group>"; };
 		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		ADFC14EC2278BE95007803B4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 				ADFC14EC2278BE95007803B4 /* TableViewController.swift */,
 				AD594D102272336800E60725 /* TransferViewController.swift */,
 				ADB3166022717844003BBDB0 /* MainViewController.swift */,
+				ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				AD8226B92278110700124006 /* TransactionCell.swift in Sources */,
 				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
 				AD594D112272336800E60725 /* TransferViewController.swift in Sources */,
+				ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */,
 				ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */,
 				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,
 				AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */,

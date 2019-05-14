@@ -22,9 +22,6 @@ class LoginViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tracking = KeyTracking()
-        print(tracking.getKey())
-        print(tracking.isKeyExpired())
     }
     
     // MARK: - Actions

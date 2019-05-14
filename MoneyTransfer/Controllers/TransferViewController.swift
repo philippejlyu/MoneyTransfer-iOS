@@ -42,7 +42,7 @@ class TransferViewController: UITableViewController {
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: header).responseJSON(completionHandler: { (response) in
                     if let responseValue = response.result.value {
                         let json = JSON(responseValue)
-                        if let success = json["success"].string {
+                        if let _ = json["success"].string {
                             self.dismiss(animated: true, completion: nil)
                         } else {
                             let error = json["error"].string!
