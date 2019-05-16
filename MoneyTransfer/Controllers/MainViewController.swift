@@ -47,7 +47,8 @@ class MainViewController: UIViewController {
                 let json = JSON(responseValue)
                 if let balance = json["balance"].double {
                     self.balance = balance
-                    self.balanceLabel.text = "$\(self.balance)"
+                    let balanceText = String(format: "%.2f", self.balance)
+                    self.balanceLabel.text = balanceText
                 }
             } else {
                 let alert = UIAlertController(title: "Error", message: "Could not connect to the server", preferredStyle: .alert)

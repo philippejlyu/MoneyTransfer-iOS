@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
                 let alert = UIAlertController(title: "Save password", message: "Would you like to save your password", preferredStyle: .alert)
                 let yes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     // TODO: Save the password in keychain with biometric authentication
+                    
+                    
                     self.performSegue(withIdentifier: "loggedIn", sender: self)
                 })
                 let no = UIAlertAction(title: "No", style: .default, handler: { (action) in

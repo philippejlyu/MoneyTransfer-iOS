@@ -52,11 +52,13 @@ class HistoryViewController: UITableViewController {
         if indexPath.section == 0 {
             let reference = incomingTransactions![indexPath.row]
             cell.recipientNameLabel.text = reference[0].string!
-            cell.amountLabel.text = "$\(reference[2].double!)"
+            let amount = String(format: "%.2f", reference[2].double!)
+            cell.amountLabel.text = amount
         } else {
             let reference = outgoingTransactions![indexPath.row]
             cell.recipientNameLabel.text = reference[1].string!
-            cell.amountLabel.text = "$\(reference[2].double!)"
+            let balanceText = String(format: "%.2f", reference[2].double!)
+            cell.amountLabel.text = balanceText
         }
         
         return cell
