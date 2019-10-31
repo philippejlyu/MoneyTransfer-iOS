@@ -20,6 +20,11 @@ class HistoryViewController: UITableViewController {
         super.viewDidLoad()
         self.refreshData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refreshData()
+    }
 
     // MARK: - Table view data source
 

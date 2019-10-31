@@ -38,7 +38,7 @@ extension MerchantViewController: NFCTagReaderSessionDelegate {
                 return
             }
         
-            self.sendTransaction(card: mifareTag.identifier.base64EncodedString(), amount: "4.40") { (completed) in
+            ServerInteractor.shared.sendTransaction(card: mifareTag.identifier.base64EncodedString(), amount: self.amount) { (completed) in
                 if completed {
                     session.invalidate()
                 } else {
@@ -46,28 +46,6 @@ extension MerchantViewController: NFCTagReaderSessionDelegate {
                 }
             }
         
-        }
-    }
-    
-    func sendTransaction(card: String, amount: String, completionHandler: @escaping (_ completed: Bool) -> Void) {
-        let keyTracking = KeyTracking()
-        let url = URL(string: "http://127.0.0.1:5000/chargeCard")
-        var header: HTTPHeaders = [:]
-        if let token = keyTracking.getKey(), let username = keyTracking.getUsername() {
-            header = ["token": token,
-                      "username": username,
-                      "card": card,
-                      "amount": amount]
-        }
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: header).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let _ = json["success"].string {
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
-                }
-            }
         }
     }
     
