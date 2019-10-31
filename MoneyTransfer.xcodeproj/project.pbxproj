@@ -16,6 +16,8 @@
 		AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D0E2272335000E60725 /* HistoryViewController.swift */; };
 		AD594D112272336800E60725 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD594D102272336800E60725 /* TransferViewController.swift */; };
 		AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */; };
+		AD6AF7BC236A7F3600CBD465 /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */; };
+		AD6AF7BE236A807600CBD465 /* MoneyInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */; };
 		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 		ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */; };
@@ -35,6 +37,8 @@
 		AD594D0E2272335000E60725 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AD594D102272336800E60725 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTracking.swift; sourceTree = "<group>"; };
+		AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
+		AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInputHandler.swift; sourceTree = "<group>"; };
 		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				AD0693152271489D000F34CA /* Assets.xcassets */,
 				AD0693172271489D000F34CA /* LaunchScreen.storyboard */,
 				AD06931A2271489D000F34CA /* Info.plist */,
+				AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */,
 			);
 			path = MoneyTransfer;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				AD594D102272336800E60725 /* TransferViewController.swift */,
 				ADB3166022717844003BBDB0 /* MainViewController.swift */,
 				ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */,
+				AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 			files = (
 				AD8226B92278110700124006 /* TransactionCell.swift in Sources */,
 				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
+				AD6AF7BC236A7F3600CBD465 /* MerchantViewController.swift in Sources */,
 				AD594D112272336800E60725 /* TransferViewController.swift in Sources */,
 				ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */,
 				ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */,
@@ -256,6 +263,7 @@
 				AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */,
 				AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */,
 				AD06930F2271489B000F34CA /* AppDelegate.swift in Sources */,
+				AD6AF7BE236A807600CBD465 /* MoneyInputHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
