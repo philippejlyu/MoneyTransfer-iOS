@@ -60,7 +60,7 @@ extension ActivateCardViewController: NFCTagReaderSessionDelegate {
             default:
                 return
             }
-            self.activateCard(card: mifareTag.identifier.base64EncodedString()) { (completed) in
+            ServerInteractor.shared.activateCard(card: mifareTag.identifier.base64EncodedString()) { (completed) in
                 if completed {
                     session.invalidate()
                 } else {
@@ -69,28 +69,4 @@ extension ActivateCardViewController: NFCTagReaderSessionDelegate {
             }
         }
     }
-    
-    func activateCard(card: String, completionHandler: @escaping (_ completed: Bool) -> Void) {
-        let keyTracking = KeyTracking()
-        let url = URL(string: "http://127.0.0.1:5000/addCard")
-        var header: HTTPHeaders = [:]
-        if let token = keyTracking.getKey(), let username = keyTracking.getUsername() {
-            header = ["token": token,
-                      "username": username,
-                      "card": card]
-        }
-        
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: header).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let _ = json["success"].string {
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
-                }
-            }
-        }
-    }
-    
-    
 }

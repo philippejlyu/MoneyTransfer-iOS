@@ -20,6 +20,11 @@ class HistoryViewController: UITableViewController {
         super.viewDidLoad()
         self.refreshData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refreshData()
+    }
 
     // MARK: - Table view data source
 
@@ -56,9 +61,12 @@ class HistoryViewController: UITableViewController {
             cell.amountLabel.text = amount
         } else {
             let reference = outgoingTransactions![indexPath.row]
-            cell.recipientNameLabel.text = reference[1].string!
+            cell.recipientNameLabel.text = "\(reference[1].string!)"
             let balanceText = String(format: "%.2f", reference[2].double!)
             cell.amountLabel.text = balanceText
+            if reference[4].int! == 1 {
+                cell.accessoryType = .checkmark
+            }
         }
         
         return cell
@@ -103,27 +111,12 @@ class HistoryViewController: UITableViewController {
     
     // MARK: - Helper functions
     func refreshData() {
-        let url = URL(string: "http://127.0.0.1:5000/transactions")
-        var headers: HTTPHeaders = [:]
-        let tracking = KeyTracking()
-        if let token = tracking.getKey(), let username = tracking.getUsername() {
-            headers = ["token": token, "username": username]
-            
-            Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-                if let responseValue = response.result.value {
-                    let json = JSON(responseValue)
-                    if let outgoing = json["outgoing"].array, let incoming = json["incoming"].array {
-                        // TODO: Make incoming and outgoing transactions separate classes
-                        self.incomingTransactions = incoming
-                        self.outgoingTransactions = outgoing
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    // TODO: Connecion error
-                }
+        ServerInteractor.shared.getTransactionData { (incoming, outgoing, error) in
+            if let incoming = incoming, let outgoing = outgoing {
+                self.incomingTransactions = incoming
+                self.outgoingTransactions = outgoing
+                self.tableView.reloadData()
             }
-        } else {
-            // TODO: Session expired
         }
     }
     /*

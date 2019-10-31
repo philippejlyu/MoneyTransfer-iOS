@@ -21,35 +21,22 @@ class MainViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getBalance()
+        self.updateBalance()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.getBalance()
+        self.updateBalance()
     }
     // MARK: - Actions
     
     // MARK: - Helper functions
-    func getBalance() {
-        let keyTracking = KeyTracking()
-        let url = URL(string: "http://127.0.0.1:5000/balance")
-        var headers: HTTPHeaders = [:]
-        if let key = keyTracking.getKey(), let username = keyTracking.getUsername() {
-            headers = ["token": key, "username": username]
-        } else {
-            // TODO: Session expired
-        }
-        
-        
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let balance = json["balance"].double {
-                    self.balance = balance
-                    let balanceText = String(format: "%.2f", self.balance)
-                    self.balanceLabel.text = balanceText
-                }
+    func updateBalance() {
+        ServerInteractor.shared.getBalance { (balance, error) in
+            if let balance = balance {
+                self.balance = balance
+                let balanceText = String(format: "%.2f", self.balance)
+                self.balanceLabel.text = balanceText
             } else {
                 let alert = UIAlertController(title: "Error", message: "Could not connect to the server", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
