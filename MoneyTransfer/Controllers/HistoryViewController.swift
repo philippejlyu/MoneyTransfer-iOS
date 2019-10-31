@@ -61,9 +61,12 @@ class HistoryViewController: UITableViewController {
             cell.amountLabel.text = amount
         } else {
             let reference = outgoingTransactions![indexPath.row]
-            cell.recipientNameLabel.text = reference[1].string!
+            cell.recipientNameLabel.text = "\(reference[1].string!)"
             let balanceText = String(format: "%.2f", reference[2].double!)
             cell.amountLabel.text = balanceText
+            if reference[4].int! == 1 {
+                cell.accessoryType = .checkmark
+            }
         }
         
         return cell
