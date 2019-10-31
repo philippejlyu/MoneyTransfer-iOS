@@ -24,6 +24,8 @@
 	<string>LaunchScreen</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Money Transfer needs to access Face ID to be able to verify your identity</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>Money Transfer uses NFC to scan your card</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -42,6 +44,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+	<array>
+		<string>D2760000850101</string>
 	</array>
 </dict>
 </plist>

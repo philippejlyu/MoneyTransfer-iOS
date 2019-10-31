@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreNFC
 
 class MerchantViewController: UIViewController {
     
     let handler = MoneyInputHandler()
+    var readerSession: NFCTagReaderSession?
+    
     @IBOutlet weak var moneyLabel: UILabel!
     
     override func viewDidLoad() {
@@ -37,6 +40,13 @@ class MerchantViewController: UIViewController {
     @IBAction func pay(_ sender: Any) {
         print(self.handler.getDoubleAmount())
         print(self.handler.getStringAmount())
+        guard NFCNDEFReaderSession.readingAvailable else {
+            print("Reading not available")
+            return
+        }
+        self.readerSession = NFCTagReaderSession(pollingOption: [.iso14443], delegate: self)
+        self.readerSession?.alertMessage = "Pay $\(self.handler.getStringAmount())"
+        self.readerSession?.begin()
     }
     
 

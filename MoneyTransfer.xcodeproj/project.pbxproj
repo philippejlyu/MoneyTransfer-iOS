@@ -18,6 +18,7 @@
 		AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */; };
 		AD6AF7BC236A7F3600CBD465 /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */; };
 		AD6AF7BE236A807600CBD465 /* MoneyInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */; };
+		AD6AF7C0236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */; };
 		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 		ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */; };
@@ -39,10 +40,12 @@
 		AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTracking.swift; sourceTree = "<group>"; };
 		AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
 		AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInputHandler.swift; sourceTree = "<group>"; };
+		AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MerchantViewController+NFCTagReaderSessionDelegate.swift"; sourceTree = "<group>"; };
 		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		ADFC14EC2278BE95007803B4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		ADFC9063236B4B5F00B9FEC1 /* MoneyTransfer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyTransfer.entitlements; sourceTree = "<group>"; };
 		B6EBF8D4FD8BF580EC88B1EA /* Pods_MoneyTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +99,7 @@
 		AD06930D2271489B000F34CA /* MoneyTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				ADFC9063236B4B5F00B9FEC1 /* MoneyTransfer.entitlements */,
 				AD06930E2271489B000F34CA /* AppDelegate.swift */,
 				AD5C1BD92276C8DC001E2F35 /* KeyTracking.swift */,
 				AD8226BB2278112E00124006 /* Controllers */,
@@ -127,6 +131,7 @@
 				ADB3166022717844003BBDB0 /* MainViewController.swift */,
 				ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */,
 				AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */,
+				AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +170,11 @@
 				TargetAttributes = {
 					AD06930A2271489B000F34CA = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -261,6 +271,7 @@
 				ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */,
 				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,
 				AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */,
+				AD6AF7C0236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift in Sources */,
 				AD5C1BDA2276C8DC001E2F35 /* KeyTracking.swift in Sources */,
 				AD06930F2271489B000F34CA /* AppDelegate.swift in Sources */,
 				AD6AF7BE236A807600CBD465 /* MoneyInputHandler.swift in Sources */,
@@ -410,14 +421,16 @@
 			baseConfigurationReference = A99A60E303B991EE1761047A /* Pods-MoneyTransfer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MoneyTransfer/MoneyTransfer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7TR28E27K7;
+				DEVELOPMENT_TEAM = 62B859BZ7E;
 				INFOPLIST_FILE = MoneyTransfer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PhilippeYu.MoneyTransfer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PhilippeYu.MoneyTransfer.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,14 +442,16 @@
 			baseConfigurationReference = 215CE4D0503D80648D9E14F7 /* Pods-MoneyTransfer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MoneyTransfer/MoneyTransfer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7TR28E27K7;
+				DEVELOPMENT_TEAM = 62B859BZ7E;
 				INFOPLIST_FILE = MoneyTransfer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PhilippeYu.MoneyTransfer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PhilippeYu.MoneyTransfer.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
