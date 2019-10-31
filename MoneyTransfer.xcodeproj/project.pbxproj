@@ -20,6 +20,7 @@
 		AD6AF7BE236A807600CBD465 /* MoneyInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */; };
 		AD6AF7C0236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */; };
 		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
+		AD8AFAA5236B61BF00E03D64 /* ActivateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8AFAA4236B61BF00E03D64 /* ActivateCardViewController.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 		ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */; };
 		ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC14EC2278BE95007803B4 /* TableViewController.swift */; };
@@ -42,6 +43,7 @@
 		AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInputHandler.swift; sourceTree = "<group>"; };
 		AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MerchantViewController+NFCTagReaderSessionDelegate.swift"; sourceTree = "<group>"; };
 		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		AD8AFAA4236B61BF00E03D64 /* ActivateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateCardViewController.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		ADFC14EC2278BE95007803B4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */,
 				AD6AF7BB236A7F3600CBD465 /* MerchantViewController.swift */,
 				AD6AF7BF236A85FE00CBD465 /* MerchantViewController+NFCTagReaderSessionDelegate.swift */,
+				AD8AFAA4236B61BF00E03D64 /* ActivateCardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8AFAA5236B61BF00E03D64 /* ActivateCardViewController.swift in Sources */,
 				AD8226B92278110700124006 /* TransactionCell.swift in Sources */,
 				ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */,
 				AD6AF7BC236A7F3600CBD465 /* MerchantViewController.swift in Sources */,

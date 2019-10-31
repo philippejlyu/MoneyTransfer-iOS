@@ -315,6 +315,38 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="HrR-ut-kmx">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Hwz-c7-oqY">
+                                        <rect key="frame" x="0.0" y="178" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hwz-c7-oqY" id="Y6Y-rc-qVl">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkR-OJ-Tvr">
+                                                    <rect key="frame" x="20" y="11" width="355" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="X6y-oD-fYX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SkR-OJ-Tvr" firstAttribute="bottom" secondItem="Y6Y-rc-qVl" secondAttribute="bottomMargin" id="2C0-Y6-nmC"/>
+                                                <constraint firstItem="SkR-OJ-Tvr" firstAttribute="trailing" secondItem="Y6Y-rc-qVl" secondAttribute="trailingMargin" id="PsD-3Z-Hqi"/>
+                                                <constraint firstItem="SkR-OJ-Tvr" firstAttribute="leading" secondItem="Y6Y-rc-qVl" secondAttribute="leadingMargin" id="RW0-Nx-8fJ"/>
+                                                <constraint firstItem="SkR-OJ-Tvr" firstAttribute="top" secondItem="Y6Y-rc-qVl" secondAttribute="topMargin" id="hHX-Ke-Xhn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="O2O-dh-jHk" kind="show" id="bKe-8u-KKL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="2Tw-Q1-rx3" id="oNT-gP-eFz"/>
@@ -785,6 +817,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIu-he-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3573.913043478261" y="1054.6875"/>
+        </scene>
+        <!--Activate Card View Controller-->
+        <scene sceneID="7zU-gt-kBd">
+            <objects>
+                <viewController id="O2O-dh-jHk" customClass="ActivateCardViewController" customModule="MoneyTransfer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CWj-wX-Xzb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kmm-ge-hUH">
+                                <rect key="frame" x="20" y="88" width="374" height="186"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="186" id="G7Q-F6-62a"/>
+                                </constraints>
+                                <string key="text">If you have a physical payment card, tap activate, then bring your phone near it. The app will record it's unique identifier, then store it in the database so that you can use it at any merchant accepting Money Transfer.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-32-zae">
+                                <rect key="frame" x="20" y="282" width="374" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="JbX-0F-478"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Activate"/>
+                                <connections>
+                                    <action selector="activateButtonPressed" destination="O2O-dh-jHk" eventType="touchUpInside" id="7Tt-kL-uyz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pi4-32-zae" firstAttribute="leading" secondItem="GMB-Gf-DfU" secondAttribute="leading" constant="20" id="0Eo-nJ-vUT"/>
+                            <constraint firstItem="GMB-Gf-DfU" firstAttribute="trailing" secondItem="kmm-ge-hUH" secondAttribute="trailing" constant="20" id="NzF-0J-fF8"/>
+                            <constraint firstItem="kmm-ge-hUH" firstAttribute="top" secondItem="GMB-Gf-DfU" secondAttribute="top" id="Ytg-mX-402"/>
+                            <constraint firstItem="pi4-32-zae" firstAttribute="top" secondItem="kmm-ge-hUH" secondAttribute="bottom" constant="8" id="eJE-Pi-CmJ"/>
+                            <constraint firstItem="kmm-ge-hUH" firstAttribute="leading" secondItem="GMB-Gf-DfU" secondAttribute="leading" constant="20" id="hib-Iz-fnd"/>
+                            <constraint firstItem="GMB-Gf-DfU" firstAttribute="trailing" secondItem="pi4-32-zae" secondAttribute="trailing" constant="20" id="oXq-pK-b8i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GMB-Gf-DfU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FMZ-Rm-cPS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C7B-tK-AfD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3573.913043478261" y="1715.625"/>
         </scene>
     </scenes>
 </document>
