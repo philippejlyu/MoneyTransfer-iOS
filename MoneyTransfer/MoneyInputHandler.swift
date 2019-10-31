@@ -64,5 +64,11 @@ class MoneyInputHandler {
         return Double(amount) as! Double
     }
     
+    func reset() {
+        self.decimalPressed = false
+        self.amount = ""
+        self.numDecimals = 0
+    }
+    
     
 }

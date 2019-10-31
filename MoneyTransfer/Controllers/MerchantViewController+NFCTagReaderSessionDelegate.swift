@@ -44,6 +44,8 @@ extension MerchantViewController: NFCTagReaderSessionDelegate {
                 } else {
                     session.invalidate(errorMessage: "Card declined")
                 }
+                self.handler.reset()
+                self.moneyLabel.text = "0.00"
             }
         
         }
