@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func login(_ sender: Any) {
-        self.login(with: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
+        ServerInteractor.shared.login(with: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
             if completed {
                 self.performSegue(withIdentifier: "loggedIn", sender: self)
             } else {
@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func createAccount(_ sender: Any) {
-        self.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
+        ServerInteractor.shared.createUserAccount(username: self.usernameTextField.text!, password: self.passwordTextField.text!) { (completed, error) in
             if completed {
                 let alert = UIAlertController(title: "Save password", message: "Would you like to save your password", preferredStyle: .alert)
                 let yes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
@@ -60,57 +60,6 @@ class LoginViewController: UIViewController {
                 let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    // MARK: - Helper functions
-    func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
-        let url = URL(string: "http://127.0.0.1:5000/login")
-        
-        let credentialData = "\(username):\(password)"
-        let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
-        let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                    let tracking = KeyTracking()
-                    tracking.updateKey(accessToken, expiry: expiry, username: self.usernameTextField.text!)
-                    completionHandler(true, nil)
-                } else {
-                    completionHandler(false, "Invalid username or password")
-                }
-            } else {
-                completionHandler(false, "Could not connect to the server")
-            }
-            
-        }
-    }
-    
-    func createUserAccount(username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
-        let url = URL(string: "http://127.0.0.1:5000/createaccount")
-        
-        let credentialData = "\(username):\(password)"
-        let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
-        let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                    let tracking = KeyTracking()
-                    tracking.updateKey(accessToken, expiry: expiry, username: self.usernameTextField.text!)
-                    completionHandler(true, nil)
-                } else {
-                    // There is an error
-                    let message = json["error"].string!
-                    completionHandler(false, message)
-                }
-            } else {
-                completionHandler(false, "Could not connect to the server")
             }
         }
     }
