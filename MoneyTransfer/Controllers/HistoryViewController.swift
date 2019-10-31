@@ -113,6 +113,7 @@ class HistoryViewController: UITableViewController {
                 if let responseValue = response.result.value {
                     let json = JSON(responseValue)
                     if let outgoing = json["outgoing"].array, let incoming = json["incoming"].array {
+                        // TODO: Make incoming and outgoing transactions separate classes
                         self.incomingTransactions = incoming
                         self.outgoingTransactions = outgoing
                         self.tableView.reloadData()
