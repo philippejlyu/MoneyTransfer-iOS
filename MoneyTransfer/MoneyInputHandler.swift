@@ -51,7 +51,9 @@ class MoneyInputHandler {
                 numDecimals -= 1
             }
         }
-        amount.removeLast()
+        if amount.count > 0 {
+            amount.removeLast()
+        }
     }
     
     func getStringAmount() -> String {
