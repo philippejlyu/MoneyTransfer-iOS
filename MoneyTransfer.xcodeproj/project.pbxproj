@@ -22,6 +22,7 @@
 		AD8226B92278110700124006 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8226B82278110700124006 /* TransactionCell.swift */; };
 		AD8AFAA5236B61BF00E03D64 /* ActivateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8AFAA4236B61BF00E03D64 /* ActivateCardViewController.swift */; };
 		AD8AFAA7236B66F600E03D64 /* ServerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8AFAA6236B66F600E03D64 /* ServerInteractor.swift */; };
+		AD8AFAAB236B825600E03D64 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8AFAAA236B825600E03D64 /* KeychainService.swift */; };
 		ADB3166122717844003BBDB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3166022717844003BBDB0 /* MainViewController.swift */; };
 		ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */; };
 		ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC14EC2278BE95007803B4 /* TableViewController.swift */; };
@@ -46,6 +47,7 @@
 		AD8226B82278110700124006 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		AD8AFAA4236B61BF00E03D64 /* ActivateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateCardViewController.swift; sourceTree = "<group>"; };
 		AD8AFAA6236B66F600E03D64 /* ServerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInteractor.swift; sourceTree = "<group>"; };
+		AD8AFAAA236B825600E03D64 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		ADB3166022717844003BBDB0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ADEF0EE5227F9C090062C0B7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		ADFC14EC2278BE95007803B4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				AD06931A2271489D000F34CA /* Info.plist */,
 				AD6AF7BD236A807600CBD465 /* MoneyInputHandler.swift */,
 				AD8AFAA6236B66F600E03D64 /* ServerInteractor.swift */,
+				AD8AFAAA236B825600E03D64 /* KeychainService.swift */,
 			);
 			path = MoneyTransfer;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				AD6AF7BC236A7F3600CBD465 /* MerchantViewController.swift in Sources */,
 				AD594D112272336800E60725 /* TransferViewController.swift in Sources */,
 				ADEF0EE6227F9C090062C0B7 /* ChangePasswordViewController.swift in Sources */,
+				AD8AFAAB236B825600E03D64 /* KeychainService.swift in Sources */,
 				ADFC14ED2278BE95007803B4 /* TableViewController.swift in Sources */,
 				AD0693112271489B000F34CA /* LoginViewController.swift in Sources */,
 				AD594D0F2272335000E60725 /* HistoryViewController.swift in Sources */,

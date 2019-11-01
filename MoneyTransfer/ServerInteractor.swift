@@ -13,7 +13,7 @@ import Alamofire
 class ServerInteractor {
     
     public static var shared = ServerInteractor()
-    private let apiURL = "https://791ba364.ngrok.io"//"http://127.0.0.1:5000"
+    private let apiURL = "https://2b4fed94.ngrok.io"//"http://127.0.0.1:5000"
     
     // MARK: Login and account creation
     func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
@@ -188,7 +188,7 @@ class ServerInteractor {
         })
     }
     
-    func sendTransaction(card: String, amount: String, completionHandler: @escaping (_ completed: Bool) -> Void) {
+    func sendTransaction(card: String, amount: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
         let keyTracking = KeyTracking()
         let url = URL(string: "\(self.apiURL)/chargeCard")
         var header: HTTPHeaders = [:]
@@ -202,9 +202,13 @@ class ServerInteractor {
             if let responseValue = response.result.value {
                 let json = JSON(responseValue)
                 if let _ = json["success"].string {
-                    completionHandler(true)
+                    completionHandler(true, nil)
                 } else {
-                    completionHandler(false)
+                    if let error = json["error"].string {
+                        completionHandler(false, error)
+                    } else {
+                        completionHandler(false, "Card declined")
+                    }
                 }
             }
         }

@@ -38,11 +38,11 @@ extension MerchantViewController: NFCTagReaderSessionDelegate {
                 return
             }
         
-            ServerInteractor.shared.sendTransaction(card: mifareTag.identifier.base64EncodedString(), amount: self.amount) { (completed) in
+            ServerInteractor.shared.sendTransaction(card: mifareTag.identifier.base64EncodedString(), amount: self.amount) { (completed, error)  in
                 if completed {
                     session.invalidate()
                 } else {
-                    session.invalidate(errorMessage: "Card declined")
+                    session.invalidate(errorMessage: error!)
                 }
                 self.handler.reset()
                 self.moneyLabel.text = "0.00"
