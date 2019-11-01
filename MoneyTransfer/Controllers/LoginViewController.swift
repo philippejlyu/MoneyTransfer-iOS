@@ -24,6 +24,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tracking = KeyTracking()
+        if !tracking.isKeyExpired() {
+            self.performSegue(withIdentifier: "loggedIn", sender: self)
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func login(_ sender: Any) {
@@ -45,13 +53,7 @@ class LoginViewController: UIViewController {
                 let alert = UIAlertController(title: "Save password", message: "Would you like to save your password", preferredStyle: .alert)
                 let yes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     // TODO: Save the password in keychain with biometric authentication
-                    let credential = Credentials(username: self.usernameTextField.text!, password: self.passwordTextField.text!)
-                    let keychainService = KeychainService()
-                    keychainService.addCredentials(credential)
                     
-                    let result = keychainService.retrievePassword()
-                    print(result.username)
-                    print(result.password)
                     
                     self.performSegue(withIdentifier: "loggedIn", sender: self)
                 })

@@ -13,34 +13,39 @@ import Alamofire
 class ServerInteractor {
     
     public static var shared = ServerInteractor()
-    private let apiURL = "https://2b4fed94.ngrok.io"//"http://127.0.0.1:5000"
+    private let apiURL = "https://affb9b0e.ngrok.io"//"http://127.0.0.1:5000"
     
     // MARK: Login and account creation
     func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
-        let url = URL(string: "\(self.apiURL)/login")
-        
-        let credentialData = "\(username):\(password)"
-        let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
-        let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            if let responseValue = response.result.value {
-                let json = JSON(responseValue)
-                if let accessToken = json["token"].string, let expiry = json["expiry"].int {
-                    let tracking = KeyTracking()
-                    tracking.updateKey(accessToken, expiry: expiry, username: username)
-                    completionHandler(true, nil)
-                } else {
-                    completionHandler(false, "Invalid username or password")
-                }
-            } else {
-                completionHandler(false, "Could not connect to the server")
-            }
+        let tracking = KeyTracking()
+        if tracking.isKeyExpired() {
+            let url = URL(string: "\(self.apiURL)/login")
             
+            let credentialData = "\(username):\(password)"
+            let utf8CredentialData = credentialData.data(using: String.Encoding.utf8)!
+            let base64Credentials = utf8CredentialData.base64EncodedString(options: [])
+            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            
+            Alamofire.request(url!, method: .post, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+                if let responseValue = response.result.value {
+                    let json = JSON(responseValue)
+                    if let accessToken = json["token"].string, let expiry = json["expiry"].int {
+                        let tracking = KeyTracking()
+                        tracking.updateKey(accessToken, expiry: expiry, username: username)
+                        completionHandler(true, nil)
+                    } else {
+                        completionHandler(false, "Invalid username or password")
+                    }
+                } else {
+                    completionHandler(false, "Could not connect to the server")
+                }
+                
+            }
+        } else {
+            completionHandler(true, nil)
         }
     }
-    
+     
     func createUserAccount(username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
         let url = URL(string: "\(self.apiURL)/createaccount")
         

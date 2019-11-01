@@ -199,8 +199,8 @@
                     <connections>
                         <segue destination="M5F-rW-6ii" kind="relationship" relationship="viewControllers" id="ERa-Km-vma"/>
                         <segue destination="ail-5d-76r" kind="relationship" relationship="viewControllers" id="ZFE-KM-3HE"/>
-                        <segue destination="JkM-Xc-iiq" kind="relationship" relationship="viewControllers" id="Bwv-7K-Y0e"/>
                         <segue destination="tWe-6g-QP3" kind="relationship" relationship="viewControllers" id="3rl-MM-UNq"/>
+                        <segue destination="JkM-Xc-iiq" kind="relationship" relationship="viewControllers" id="Bwv-7K-Y0e"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgy-pQ-PYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -522,7 +522,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="h5D-7D-j7S"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -550,7 +550,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="POe-6p-S24"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
