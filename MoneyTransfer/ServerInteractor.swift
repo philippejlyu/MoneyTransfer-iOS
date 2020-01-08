@@ -13,7 +13,7 @@ import Alamofire
 class ServerInteractor {
     
     public static var shared = ServerInteractor()
-    private let apiURL = "https://affb9b0e.ngrok.io"//"http://127.0.0.1:5000"
+    private let apiURL = "http://127.0.0.1:5000"
     
     // MARK: Login and account creation
     func login(with username: String, password: String, completionHandler: @escaping (_ completed: Bool, _ error: String?) -> Void) {
